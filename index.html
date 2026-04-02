@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Joanne — Trilingual brand content for premium businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--burg:#5C1F2E;--burg2:#8B3A4D;--burg3:#C9849A;--cream:#F7F3EE;--dark:#0F0C0A;--dark2:#1A1410;--dark3:#2C2018;--stone:#C9B99A;--muted:#8A7A6A;--font-d:'Playfair Display',Georgia,serif;--font-b:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--cream);font-family:var(--font-b);font-weight:300;overflow-x:hidden;cursor:none}
+
+/* CURSOR */
+#cur{width:10px;height:10px;background:var(--burg3);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s}
+#cur-ring{width:36px;height:36px;border:1px solid rgba(201,132,154,.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .5s cubic-bezier(.16,1,.3,1),height .5s cubic-bezier(.16,1,.3,1)}
+body.hovering #cur{width:6px;height:6px;background:var(--cream)}
+body.hovering #cur-ring{width:64px;height:64px;border-color:rgba(201,132,154,.6)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:32px 60px;display:flex;justify-content:space-between;align-items:center;transition:background .4s,padding .4s}
+nav.scrolled{background:rgba(15,12,10,.92);backdrop-filter:blur(20px);padding:20px 60px;border-bottom:1px solid rgba(247,243,238,.05)}
+.nav-logo{font-family:var(--font-d);font-size:15px;font-weight:400;font-style:italic;letter-spacing:.2em;color:var(--cream);text-decoration:none;transition:opacity .3s}
+.nav-logo:hover{opacity:.7}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,238,.5);text-decoration:none;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--burg3);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav-links a:hover{color:var(--cream)}
+.nav-links a:hover::after{transform:scaleX(1)}
+
+/* HERO */
+.hero{height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hero-layer{position:absolute;inset:0;will-change:transform}
+.hero-layer-1{background:var(--dark)}
+.hero-layer-2{background:radial-gradient(ellipse at 30% 50%,rgba(92,31,46,.15) 0%,transparent 60%)}
+.hero-layer-3{background:radial-gradient(ellipse at 80% 80%,rgba(201,132,154,.08) 0%,transparent 50%)}
+.hero-initial{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-d);font-size:clamp(200px,30vw,400px);font-weight:900;font-style:italic;color:rgba(247,243,238,.02);user-select:none;pointer-events:none}
+.hero-content{position:relative;z-index:1;padding:0 120px}
+.hero-line{overflow:hidden}
+.hero-word{display:inline-block;font-family:var(--font-d);font-size:clamp(48px,7vw,96px);font-weight:700;line-height:1.05;color:var(--cream);opacity:0;animation:fadeUp .8s forwards}
+.hero-word.italic{font-style:italic;color:var(--burg3)}
+.hero-word.outline{color:transparent;-webkit-text-stroke:1.5px var(--cream)}
+#w1{animation-delay:.3s}#w2{animation-delay:.5s}#w3{animation-delay:.6s}#w4{animation-delay:.7s}
+.hero-sub{margin-top:36px;opacity:0;animation:fadeUp .8s .9s forwards;position:relative;z-index:3}
+.hero-sub-text{font-size:17px;font-weight:300;color:rgba(247,243,238,.5);line-height:1.7;max-width:480px;margin-bottom:32px}
+.hero-cta-row{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:12px;background:var(--burg);color:var(--cream);text-decoration:none;padding:18px 40px;font-family:var(--font-b);font-size:10px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;position:relative;overflow:hidden;transition:color .3s}
+.btn-primary::before{content:'';position:absolute;inset:0;background:var(--cream);transform:translateX(-101%);transition:transform .4s}
+.btn-primary:hover{color:var(--dark2)}
+.btn-primary:hover::before{transform:translateX(0)}
+.btn-primary span{position:relative;z-index:1}
+.btn-secondary{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,238,.4);text-decoration:none;transition:color .3s;cursor:pointer;position:relative;z-index:3}
+.btn-secondary:hover{color:var(--cream)}
+.btn-secondary::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--burg3);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.btn-secondary:hover::after{transform:scaleX(1)}
+.hero-scroll{position:absolute;bottom:36px;left:120px;display:flex;align-items:center;gap:14px;opacity:0;animation:fadeUp .8s 1.2s forwards;z-index:3}
+.hero-scroll-line{width:40px;height:1px;background:linear-gradient(to right,var(--burg3),transparent)}
+.hero-scroll-text{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,238,.3)}
+
+/* NUMBERS */
+.numbers-section{position:relative;padding:0;overflow:hidden}
+.numbers-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-d);font-size:clamp(80px,12vw,160px);font-weight:900;font-style:italic;color:rgba(26,20,16,.06);pointer-events:none;white-space:nowrap}
+.numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;z-index:1}
+.number-item{background:#F5F0EA;padding:52px 40px;position:relative;overflow:hidden}
+.number-value{font-family:var(--font-d);font-size:clamp(48px,5vw,72px);font-weight:300;font-style:italic;color:var(--dark2);line-height:1;margin-bottom:10px}
+.number-label{font-size:12px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+/* STRIP */
+.strip{background:var(--burg);padding:28px 120px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.strip-item{display:flex;align-items:center;gap:14px;font-family:var(--font-d);font-size:15px;font-style:italic;font-weight:400;color:rgba(247,243,238,.7);opacity:0;animation:fadeIn .5s ease forwards}
+.strip-item:nth-child(1){animation-delay:.1s}.strip-item:nth-child(2){animation-delay:.2s}.strip-item:nth-child(3){animation-delay:.3s}.strip-item:nth-child(4){animation-delay:.4s}.strip-item:nth-child(5){animation-delay:.5s}
+.strip-dot{width:3px;height:3px;border-radius:50%;background:rgba(247,243,238,.3);flex-shrink:0}
+
+/* SECTIONS */
+.section-pad{padding:140px 120px}
+.s-label{font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--burg3);margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.s-label::before{content:'';width:24px;height:1px;background:var(--burg3)}
+.s-label-dark{color:var(--burg)}
+.s-label-dark::before{background:var(--burg)}
+.s-title{font-family:var(--font-d);font-size:clamp(36px,4vw,60px);font-weight:700;line-height:1.1;color:var(--cream)}
+.s-title em{font-style:italic;color:var(--burg3)}
+.s-title-dark{color:var(--dark2)}
+.s-title-dark em{color:var(--burg)}
+.s-intro{font-size:15px;font-weight:300;color:rgba(247,243,238,.45);line-height:1.8;max-width:420px}
+.s-intro-dark{color:var(--muted)}
+
+/* SERVICES */
+.services-section{background:var(--dark);padding:140px 120px}
+.services-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(247,243,238,.06)}
+.svc-card{background:var(--dark);padding:52px 44px;transition:background .3s;text-decoration:none;display:block;position:relative}
+.svc-card:hover{background:var(--dark2)}
+.svc-card-badge{position:absolute;top:0;right:0;background:var(--burg);color:var(--cream);font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;padding:8px 16px}
+.svc-num{font-family:var(--font-d);font-size:13px;font-style:italic;color:rgba(201,132,154,.5);margin-bottom:20px}
+.svc-name{font-family:var(--font-d);font-size:clamp(24px,2.8vw,36px);font-weight:400;color:var(--cream);margin-bottom:10px}
+.svc-desc{font-size:14px;font-weight:300;color:rgba(247,243,238,.4);line-height:1.7;margin-bottom:20px}
+.svc-price{font-family:var(--font-d);font-size:24px;font-weight:300;font-style:italic;color:var(--burg3);margin-bottom:16px}
+.svc-includes{list-style:none;padding:0}
+.svc-includes li{font-size:12px;font-weight:300;color:rgba(247,243,238,.35);padding:6px 0;border-bottom:1px solid rgba(247,243,238,.04);display:flex;align-items:center;gap:10px}
+.svc-includes li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--burg3);flex-shrink:0}
+.svc-link{display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--burg3);margin-top:24px;transition:gap .3s}
+.svc-card:hover .svc-link{gap:16px}
+
+/* ENTRY OFFER */
+.entry-bar{background:var(--dark2);padding:60px 120px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;border-top:1px solid rgba(247,243,238,.05)}
+.entry-info{flex:1;min-width:280px}
+.entry-title{font-family:var(--font-d);font-size:24px;font-weight:400;color:var(--cream);margin-bottom:8px}
+.entry-desc{font-size:14px;font-weight:300;color:rgba(247,243,238,.4);line-height:1.7}
+.entry-price{font-family:var(--font-d);font-size:20px;font-style:italic;color:var(--burg3);flex-shrink:0}
+.entry-link{display:inline-flex;align-items:center;gap:12px;background:transparent;border:1px solid rgba(201,132,154,.3);color:var(--cream);text-decoration:none;padding:14px 28px;font-family:var(--font-b);font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;transition:all .3s;flex-shrink:0}
+.entry-link:hover{background:var(--burg);border-color:var(--burg)}
+
+/* QUIZ STRIP */
+.quiz-strip{background:var(--dark);padding:48px 120px;text-align:center;border-top:1px solid rgba(247,243,238,.05)}
+.quiz-strip-text{font-size:14px;font-weight:300;color:rgba(247,243,238,.35);margin-bottom:12px}
+.quiz-strip a{font-family:var(--font-d);font-size:18px;font-style:italic;color:var(--burg3);text-decoration:none;border-bottom:1px solid rgba(201,132,154,.3);padding-bottom:2px;transition:border-color .3s}
+.quiz-strip a:hover{border-color:var(--burg3)}
+
+/* PHILOSOPHY */
+.phil-section{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.phil-left{background:var(--dark2);padding:120px 80px;display:flex;flex-direction:column;justify-content:center}
+.phil-right{background:#F5F0EA;padding:120px 80px;display:flex;flex-direction:column;gap:0}
+.belief-row{padding:36px 0;border-bottom:1px solid rgba(26,20,16,.08);transform:translateX(40px);opacity:0;transition:transform .7s,opacity .7s}
+.belief-row:first-child{border-top:1px solid rgba(26,20,16,.08)}
+.belief-row.visible{transform:translateX(0);opacity:1}
+.belief-row:nth-child(1){transition-delay:0s}.belief-row:nth-child(2){transition-delay:.1s}.belief-row:nth-child(3){transition-delay:.2s}.belief-row:nth-child(4){transition-delay:.3s}
+.belief-num{font-family:var(--font-d);font-size:12px;font-style:italic;color:var(--burg2);margin-bottom:8px}
+.belief-title{font-family:var(--font-d);font-size:22px;font-weight:400;color:var(--dark2);margin-bottom:8px}
+.belief-desc{font-size:14px;font-weight:300;color:var(--muted);line-height:1.7}
+
+/* DIFFERENCE */
+.diff-section{background:var(--burg);padding:120px 120px;position:relative;overflow:hidden}
+.diff-bg-word{position:absolute;bottom:-40px;right:-20px;font-family:var(--font-d);font-size:clamp(100px,18vw,240px);font-weight:900;font-style:italic;color:rgba(247,243,238,.06);user-select:none;pointer-events:none;line-height:1}
+.diff-top{max-width:700px;margin-bottom:80px}
+.diff-statement{font-family:var(--font-d);font-size:clamp(36px,5vw,64px);font-weight:400;line-height:1.15;color:var(--cream)}
+.diff-statement em{font-style:italic;opacity:.6}
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(247,243,238,.1);position:relative;z-index:1}
+.diff-item{background:rgba(92,31,46,.5);padding:44px 40px;transition:background .3s;backdrop-filter:blur(10px)}
+.diff-item:hover{background:rgba(92,31,46,.85)}
+.diff-item-num{font-family:var(--font-d);font-size:48px;font-weight:300;color:rgba(247,243,238,.1);line-height:1;margin-bottom:16px;transition:color .3s}
+.diff-item:hover .diff-item-num{color:rgba(247,243,238,.2)}
+.diff-item-title{font-family:var(--font-d);font-size:20px;font-weight:400;color:var(--cream);margin-bottom:10px}
+.diff-item-desc{font-size:14px;font-weight:300;color:rgba(247,243,238,.55);line-height:1.7}
+
+/* WORK */
+.work-section{background:var(--dark3);padding:140px 120px}
+.work-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px}
+.work-title{font-family:var(--font-d);font-size:clamp(36px,5vw,64px);font-weight:700;line-height:1.1;color:var(--cream)}
+.work-title em{font-style:italic;color:var(--burg3)}
+.work-sub{font-size:12px;font-weight:300;color:rgba(247,243,238,.3);max-width:220px;text-align:right;line-height:1.7}
+.work-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.wi{background:var(--dark2);position:relative;overflow:hidden;cursor:none}
+.wi:nth-child(1){grid-column:span 7;min-height:500px}
+.wi:nth-child(2){grid-column:span 5;min-height:240px}
+.wi:nth-child(3){grid-column:span 5;min-height:240px}
+.wi-bg{position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.wi:hover .wi-bg{transform:scale(1.05)}
+.wi-grain{position:absolute;inset:0;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+.wi-cat{position:absolute;top:24px;left:24px;font-size:10px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:rgba(247,243,238,.2);font-style:italic;font-family:var(--font-d)}
+.wi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,12,10,.96) 0%,transparent 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:32px;opacity:0;transition:opacity .5s}
+.wi:hover .wi-overlay{opacity:1}
+.wi-info-cat{font-size:10px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--burg3);margin-bottom:8px}
+.wi-name{font-family:var(--font-d);font-size:22px;font-weight:700;color:var(--cream);margin-bottom:6px}
+.wi-desc{font-size:13px;font-weight:300;color:rgba(247,243,238,.55);line-height:1.6}
+
+/* PROJECT OVERLAY */
+#project-overlay{display:none;position:fixed;inset:0;background:rgba(15,12,10,.97);z-index:300;overflow-y:auto;backdrop-filter:blur(12px)}
+#project-overlay.open{display:block}
+.proj-close{position:fixed;top:28px;right:60px;z-index:310;background:none;border:none;color:rgba(247,243,238,.4);font-size:28px;cursor:pointer;transition:color .3s;line-height:1;padding:8px}
+.proj-close:hover{color:var(--burg3)}
+.proj-hero{min-height:85vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:100px 120px;overflow:hidden}
+.proj-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.proj-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,12,10,.95) 0%,rgba(15,12,10,.3) 40%,rgba(15,12,10,.15) 100%)}
+.proj-hero-content{position:relative;z-index:1}
+.proj-eyebrow{font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--burg3);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.proj-eyebrow::before{content:'';width:20px;height:1px;background:var(--burg3)}
+.proj-title{font-family:var(--font-d);font-size:clamp(48px,7vw,88px);font-weight:700;line-height:1.02;color:var(--cream);margin-bottom:16px}
+.proj-title em{font-style:italic;color:var(--burg3)}
+.proj-sub{font-size:17px;font-weight:300;color:rgba(247,243,238,.55);line-height:1.8;max-width:560px}
+.proj-meta-row{display:flex;gap:40px;margin-top:32px;flex-wrap:wrap}
+.proj-meta-item{display:flex;flex-direction:column;gap:4px}
+.proj-meta-label{font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,238,.3)}
+.proj-meta-val{font-size:14px;font-weight:300;color:rgba(247,243,238,.7)}
+
+.proj-body{padding:80px 120px;max-width:1100px}
+
+.proj-video-wrap{margin:56px -120px;position:relative;aspect-ratio:16/9;background:var(--dark2);overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.proj-video-wrap:hover .proj-video-play{transform:translate(-50%,-50%) scale(1.1)}
+.proj-video-overlay{position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1);background-size:cover;background-position:center}
+.proj-video-wrap:hover .proj-video-overlay{transform:scale(1.03)}
+.proj-video-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(15,12,10,.4) 0%,rgba(15,12,10,.7) 100%)}
+.proj-video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;border-radius:50%;background:rgba(92,31,46,.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;transition:transform .4s,background .4s;z-index:2}
+.proj-video-wrap:hover .proj-video-play{background:var(--burg)}
+.proj-video-play::after{content:'';width:0;height:0;border-left:20px solid var(--cream);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:4px}
+.proj-video-label{position:absolute;bottom:28px;left:32px;z-index:2;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,238,.5)}
+.proj-section-label{font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--burg3);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.proj-section-label::before{content:'';width:20px;height:1px;background:var(--burg3)}
+.proj-h2{font-family:var(--font-d);font-size:clamp(24px,3vw,36px);font-weight:700;line-height:1.2;color:var(--cream);margin-bottom:20px}
+.proj-h2 em{font-style:italic;color:var(--burg3)}
+.proj-text{font-size:15px;font-weight:300;color:rgba(247,243,238,.5);line-height:1.8;margin-bottom:16px}
+.proj-list{list-style:none;padding:0;margin:20px 0 32px}
+.proj-list li{padding:12px 0;border-bottom:1px solid rgba(247,243,238,.06);font-size:14px;font-weight:300;color:rgba(247,243,238,.5);display:flex;align-items:start;gap:12px;line-height:1.6}
+.proj-list li:first-child{border-top:1px solid rgba(247,243,238,.06)}
+.proj-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--burg3);flex-shrink:0;margin-top:8px}
+
+.proj-gallery{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin:56px -120px 56px -120px}
+.proj-gallery-item{aspect-ratio:16/10;position:relative;overflow:hidden;min-height:400px}
+.proj-gallery-item:first-child{grid-column:span 2;aspect-ratio:21/9;min-height:560px}
+.proj-gallery-item:last-child{grid-column:span 2;aspect-ratio:21/9;min-height:480px}
+.proj-gallery-item-bg{position:absolute;inset:0;transition:transform .8s cubic-bezier(.16,1,.3,1);background-size:cover;background-position:center}
+.proj-gallery-item:hover .proj-gallery-item-bg{transform:scale(1.04)}
+.proj-gallery-caption{position:absolute;bottom:0;left:0;right:0;padding:28px 36px;background:linear-gradient(to top,rgba(15,12,10,.85) 0%,transparent 100%);font-size:13px;font-weight:300;color:rgba(247,243,238,.6);letter-spacing:.05em}
+
+.proj-results{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(247,243,238,.06);margin:56px -120px 56px -120px}
+.proj-result-item{background:var(--dark);padding:72px 40px;text-align:center}
+.proj-result-num{font-family:var(--font-d);font-size:clamp(48px,6vw,80px);font-weight:300;font-style:italic;color:var(--burg3);line-height:1;margin-bottom:14px}
+.proj-result-label{font-size:13px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,243,238,.4)}
+
+.proj-testimonial{padding:64px;background:rgba(92,31,46,.12);border-left:3px solid var(--burg3);margin:56px 0}
+.proj-testimonial-text{font-family:var(--font-d);font-size:clamp(20px,2.5vw,28px);font-weight:400;font-style:italic;color:var(--cream);line-height:1.6;margin-bottom:20px}
+.proj-testimonial-author{font-size:13px;font-weight:400;color:rgba(247,243,238,.4)}
+
+.proj-cta{padding:80px 120px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(247,243,238,.06);flex-wrap:wrap;gap:24px}
+.proj-cta-text{max-width:400px}
+.proj-cta-label{font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,243,238,.25);margin-bottom:12px}
+.proj-cta-title{font-family:var(--font-d);font-size:clamp(28px,3.5vw,48px);font-weight:700;color:var(--cream)}
+.proj-cta-title em{font-style:italic;color:var(--burg3)}
+.proj-cta-btn{display:inline-flex;align-items:center;gap:14px;background:var(--burg);color:var(--cream);text-decoration:none;padding:18px 40px;font-family:var(--font-b);font-size:10px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;transition:background .3s}
+.proj-cta-btn:hover{background:var(--cream);color:var(--dark2)}
+
+/* BOOKING */
+.booking-section{background:var(--dark2);padding:140px 120px;position:relative;overflow:hidden}
+.booking-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(92,31,46,.25) 0%,transparent 60%)}
+.booking-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;text-align:center}
+.booking-eyebrow{font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--burg3);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:14px}
+.booking-eyebrow::before,.booking-eyebrow::after{content:'';width:32px;height:1px;background:var(--burg3)}
+.booking-title{font-family:var(--font-d);font-size:clamp(36px,5vw,68px);font-weight:700;line-height:1.1;color:var(--cream);margin-bottom:16px}
+.booking-title em{font-style:italic;color:var(--burg3)}
+.booking-sub{font-size:16px;font-weight:300;color:rgba(247,243,238,.5);line-height:1.7;max-width:500px;margin:0 auto 52px}
+.calendly-wrap{background:rgba(247,243,238,.03);border:1px solid rgba(247,243,238,.08);border-radius:4px;overflow:hidden;min-height:700px;display:flex;align-items:center;justify-content:center}
+.calendly-placeholder{text-align:center;padding:60px}
+.calendly-placeholder-icon{font-size:48px;margin-bottom:20px}
+.calendly-placeholder-title{font-family:var(--font-d);font-size:24px;font-weight:400;color:rgba(247,243,238,.4);margin-bottom:12px}
+.calendly-placeholder-text{font-size:14px;font-weight:300;color:rgba(247,243,238,.25);line-height:1.7;max-width:400px;margin:0 auto}
+
+/* CONTACT */
+.contact-section{background:#F5F0EA;padding:140px 120px;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.contact-eyebrow{font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--burg);margin-bottom:24px;display:flex;align-items:center;gap:14px}
+.contact-eyebrow::before{content:'';width:20px;height:1px;background:var(--burg)}
+.contact-title{font-family:var(--font-d);font-size:clamp(36px,4.5vw,60px);font-weight:700;line-height:1.05;color:var(--dark2);margin-bottom:24px}
+.contact-title em{font-style:italic;color:var(--burg)}
+.contact-body{font-size:15px;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:36px}
+.contact-detail{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--muted);margin-bottom:10px}
+.contact-detail::before{content:'';width:18px;height:1px;background:var(--burg);flex-shrink:0}
+.form{display:flex;flex-direction:column;gap:28px}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.form-input,.form-textarea,.form-select{background:transparent;border:none;border-bottom:1px solid rgba(26,20,16,.15);padding:12px 0;width:100%;font-family:var(--font-b);font-size:14px;font-weight:300;color:var(--dark2);outline:none;transition:border-color .3s}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--burg)}
+.form-textarea{resize:none;height:90px}
+.form-select{appearance:none;cursor:pointer}
+.form-submit{background:var(--dark2);color:var(--cream);border:none;padding:18px 44px;font-family:var(--font-b);font-size:10px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;width:fit-content;position:relative;overflow:hidden;transition:color .3s}
+.form-submit::before{content:'';position:absolute;inset:0;background:var(--burg);transform:translateX(-101%);transition:transform .4s}
+.form-submit span{position:relative;z-index:1}
+.form-submit:hover::before{transform:translateX(0)}
+
+/* FOOTER */
+footer{background:var(--dark);padding:48px 120px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(247,243,238,.05)}
+.footer-logo{font-family:var(--font-d);font-size:17px;font-weight:400;font-style:italic;color:var(--cream)}
+.footer-mid{font-size:11px;font-weight:300;color:rgba(247,243,238,.2);letter-spacing:.08em;text-align:center}
+.footer-links{display:flex;gap:28px;list-style:none}
+.footer-links a{font-size:10px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:rgba(247,243,238,.25);text-decoration:none;transition:color .3s}
+.footer-links a:hover{color:var(--burg3)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s,transform .9s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
+
+@media(max-width:900px){
+  nav{padding:20px 24px}.nav-links{display:none}
+  .hero-content{padding:0 24px}.section-pad,.services-section,.work-section,.booking-section,.diff-section{padding:80px 24px}
+  .numbers-grid{grid-template-columns:1fr 1fr}.services-header{grid-template-columns:1fr;gap:20px}
+  .svc-grid{grid-template-columns:1fr}.entry-bar{padding:48px 24px;flex-direction:column;text-align:center}
+  .quiz-strip{padding:36px 24px}
+  .phil-section{grid-template-columns:1fr}.phil-left{position:static;height:auto;padding:80px 24px}.phil-right{padding:80px 24px}
+  .diff-section{padding:80px 24px}.diff-grid{grid-template-columns:1fr}
+  .work-grid{grid-template-columns:1fr 1fr}.wi:nth-child(1){grid-column:span 2}
+  .proj-hero{padding:100px 24px 60px;min-height:auto}.proj-body{padding:48px 24px}.proj-cta{padding:48px 24px;flex-direction:column;text-align:center}
+  .proj-gallery{grid-template-columns:1fr;margin-left:-24px;margin-right:-24px}.proj-gallery-item:first-child{aspect-ratio:16/10;min-height:240px}
+  .proj-results{grid-template-columns:1fr;margin-left:-24px;margin-right:-24px}.proj-close{right:24px;top:20px}
+  .proj-video-wrap{margin-left:-24px;margin-right:-24px}
+  .proj-meta-row{gap:20px}
+  .contact-section{grid-template-columns:1fr;padding:80px 24px;gap:48px}
+  footer{flex-direction:column;gap:20px;text-align:center;padding:36px 24px}
+  .strip{padding:24px;justify-content:center;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Studio Joanne</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#booking">Book a call</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-layer hero-layer-1"></div>
+  <div class="hero-layer hero-layer-2"></div>
+  <div class="hero-layer hero-layer-3"></div>
+  <div class="hero-initial" id="heroInitial">J</div>
+  <div class="hero-content">
+    <div style="font-size:12px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:#C9849A;margin-bottom:28px;display:flex;align-items:center;gap:16px;opacity:0;animation:fadeUp .8s .2s forwards;"><span style="display:inline-block;width:36px;height:1px;background:#C9849A;"></span>Trilingual Brand Content · Belgium & Europe</div>
+    <div class="hero-line"><span class="hero-word" id="w1">Your brand,</span></div>
+    <div class="hero-line"><span class="hero-word" id="w2">exactly </span><span class="hero-word italic" id="w3">as you</span></div>
+    <div class="hero-line"><span class="hero-word outline" id="w4">imagined it.</span></div>
+    <div class="hero-sub" id="heroSub">
+      <p class="hero-sub-text">Strategy, direction, and production for premium brands who want their content to feel as good as what they actually deliver. One creative partner. Three languages. Zero compromise.</p>
+      <div class="hero-cta-row">
+        <a href="#booking" class="btn-primary"><span>Book a discovery call →</span></a>
+        <a href="#work" class="btn-secondary">See the work</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div><span class="hero-scroll-text">Scroll to explore</span></div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers-section reveal">
+  <div class="numbers-bg-text">Joanne</div>
+  <div class="numbers-grid">
+    <div class="number-item"><div class="number-value">8+</div><div class="number-label">Years in marketing, sales & creative</div></div>
+    <div class="number-item"><div class="number-value">3</div><div class="number-label">Languages — EN · FR · NL</div></div>
+    <div class="number-item"><div class="number-value">1</div><div class="number-label">Creative partner, fully invested</div></div>
+    <div class="number-item"><div class="number-value">7</div><div class="number-label">Days from filming to delivery</div></div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">Brand Strategy</div>
+  <div class="strip-item"><span class="strip-dot"></span> Creative Direction</div>
+  <div class="strip-item"><span class="strip-dot"></span> Video Production</div>
+  <div class="strip-item"><span class="strip-dot"></span> Content in EN · FR · NL</div>
+  <div class="strip-item"><span class="strip-dot"></span> AI-Assisted, Human-Directed</div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="services-header">
+    <div class="reveal">
+      <div class="s-label">How we work together</div>
+      <h2 class="s-title">Two ways to work<br>with <span style="color:var(--burg3);">Joanne</span></h2>
+    </div>
+    <p class="s-intro reveal reveal-delay-1">Strategy-informed content that makes your brand impossible to ignore — in every language your audience speaks.</p>
+  </div>
+
+  <div class="svc-grid">
+    <a href="brand-content-day.html" class="svc-card reveal">
+      <div class="svc-num">01</div>
+      <div class="svc-name">Brand Content Day</div>
+      <div class="svc-desc">One focused day of filming, built on a strategic brand deep-dive. You get a full month of content — hero video, short-form clips, captions, and a brand direction guide. Strategy + production in one.</div>
+      <div class="svc-price">€2,400</div>
+      <ul class="svc-includes">
+        <li>Brand deep-dive & creative brief</li>
+        <li>Full filming day, directed by me</li>
+        <li>1 hero video + 4–6 short-form clips</li>
+        <li>Captions in 2 languages</li>
+        <li>30-day performance review call</li>
+      </ul>
+      <div class="svc-link">View full details →</div>
+    </a>
+    <a href="creative-retainer.html" class="svc-card reveal reveal-delay-1">
+      <div class="svc-card-badge">Best value</div>
+      <div class="svc-num">02</div>
+      <div class="svc-name">Creative Retainer</div>
+      <div class="svc-desc">An ongoing creative partnership. One filming day per month, content in all three languages, quarterly brand reviews, and a creative director who knows your brand inside out.</div>
+      <div class="svc-price">€2,000/month</div>
+      <ul class="svc-includes">
+        <li>Everything in Brand Content Day, monthly</li>
+        <li>Captions in all 3 languages included</li>
+        <li>Monthly planning + quarterly review</li>
+        <li>Emergency shoot days on 48h notice</li>
+        <li>Ongoing creative direction between shoots</li>
+      </ul>
+      <div class="svc-link">View full details →</div>
+    </a>
+  </div>
+</section>
+
+<!-- ENTRY OFFER -->
+<div class="entry-bar">
+  <div class="entry-info">
+    <div class="entry-title">Not ready for a full production yet?</div>
+    <div class="entry-desc">Start with a Brand Direction Call — a 90-minute strategy conversation where I audit your content, identify what's holding you back, and give you a clear action plan. €350 credited toward a Brand Content Day if you book within 30 days.</div>
+  </div>
+  <div class="entry-price">€350</div>
+  <a href="brand-direction-call.html" class="entry-link">Learn more →</a>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-strip">
+  <div class="quiz-strip-text">Not sure which service fits your brand?</div>
+  <a href="start-here.html">Take the 60-second quiz →</a>
+</div>
+
+<!-- PHILOSOPHY -->
+<section class="phil-section" id="about">
+  <div class="phil-left">
+    <!-- YOUR PHOTO -->
+    <div style="width:100%;aspect-ratio:3/4;max-height:480px;background:linear-gradient(135deg,rgba(92,31,46,.3),rgba(26,20,16,.8));border:1px solid rgba(201,132,154,.15);margin-bottom:44px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;">
+      <!-- REPLACE THIS ENTIRE DIV WITH: <img src="your-photo.jpg" alt="Joanne" style="width:100%;height:100%;object-fit:cover;"> -->
+      <div style="position:absolute;inset:0;opacity:.05;background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;);background-size:180px;"></div>
+      <div style="text-align:center;position:relative;z-index:1;">
+        <div style="font-family:var(--font-d);font-size:64px;font-weight:300;font-style:italic;color:rgba(201,132,154,.15);margin-bottom:16px;">J</div>
+        <div style="font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,238,.2);">Your photo here</div>
+        <div style="font-size:10px;font-weight:300;color:rgba(247,243,238,.12);margin-top:8px;line-height:1.6;">Replace this div with an img tag<br>pointing to your photo</div>
+      </div>
+    </div>
+    <div class="s-label" style="color:#C9849A;margin-bottom:32px;">The creative behind the work</div>
+    <h2 style="font-family:var(--font-d);font-size:clamp(28px,3vw,44px);font-weight:700;line-height:1.1;color:var(--cream);margin-bottom:28px;">I didn't arrive here<br>in a straight line.<br><em style="font-style:italic;color:var(--burg3)">Nobody interesting does.</em></h2>
+    <p style="font-size:15px;font-weight:300;color:rgba(247,243,238,.5);line-height:1.9;margin-bottom:16px;">I'm Joanne, a Belgian creative with <strong style="color:rgba(247,243,238,.85);font-weight:400;">8+ years across marketing, sales and creative production</strong> — and my own businesses along the way.</p>
+    <p style="font-size:15px;font-weight:300;color:rgba(247,243,238,.5);line-height:1.9;margin-bottom:16px;">I work in <strong style="color:rgba(247,243,238,.85);font-weight:400;">English, French and Dutch</strong> — creating content that resonates in each language, not just translates. Based in Belgium, working across Europe.</p>
+    <p style="font-size:15px;font-weight:300;color:rgba(247,243,238,.5);line-height:1.9;margin-bottom:16px;">My background in sales means I understand <strong style="color:rgba(247,243,238,.85);font-weight:400;">why people buy</strong>, not just what looks beautiful. Your content will be made to move people — strategically, emotionally, commercially.</p>
+    <p style="font-size:15px;font-weight:300;color:rgba(247,243,238,.5);line-height:1.9;">I take on very few clients. And <strong style="color:rgba(247,243,238,.85);font-weight:400;">I give everything to the ones I do.</strong></p>
+  </div>
+  <div class="phil-right">
+    <div class="belief-row">
+      <div class="belief-num">I</div>
+      <div class="belief-title">Strategy before camera</div>
+      <div class="belief-desc">I never film without understanding your brand first. Every Brand Content Day starts with a strategic deep-dive — so the content has direction, not just aesthetics.</div>
+    </div>
+    <div class="belief-row">
+      <div class="belief-num">II</div>
+      <div class="belief-title">Three languages, one voice</div>
+      <div class="belief-desc">Your brand should feel the same whether someone encounters it in English, French, or Dutch. I create content natively in all three — no awkward translations, no lost nuance.</div>
+    </div>
+    <div class="belief-row">
+      <div class="belief-num">III</div>
+      <div class="belief-title">Less, but better</div>
+      <div class="belief-desc">I'd rather make one piece of content that genuinely moves someone than fifty that are forgotten. Impact is my measure, not volume.</div>
+    </div>
+    <div class="belief-row">
+      <div class="belief-num">IV</div>
+      <div class="belief-title">You work with me directly</div>
+      <div class="belief-desc">No account managers. No junior teams. The person you speak to is the person making your content — with full creative investment in your brand.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENCE -->
+<section class="diff-section">
+  <div class="diff-bg-word">Joanne</div>
+  <div class="diff-top reveal">
+    <div class="s-label" style="color:rgba(247,243,238,.5);margin-bottom:28px;">Why Joanne</div>
+    <p class="diff-statement">A creative director<br>who also <em>makes.</em><br>In three <em>languages.</em></p>
+  </div>
+  <div class="diff-grid reveal reveal-delay-1">
+    <div class="diff-item">
+      <div class="diff-item-num">01</div>
+      <div class="diff-item-title">Trilingual content, native fluency</div>
+      <div class="diff-item-desc">English, French and Dutch — not translated, but created natively. Three markets, one creative partner, no loss of cultural nuance or tone.</div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-item-num">02</div>
+      <div class="diff-item-title">Strategy and execution in one mind</div>
+      <div class="diff-item-desc">I both think and make. The person who develops your brand strategy is the same person behind the camera — no brief lost in translation.</div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-item-num">03</div>
+      <div class="diff-item-title">Sales instinct most creatives lack</div>
+      <div class="diff-item-desc">I know what makes someone buy — not just what looks beautiful. Your content will be designed to move people to action, not just to admire.</div>
+    </div>
+    <div class="diff-item">
+      <div class="diff-item-num">04</div>
+      <div class="diff-item-title">AI-assisted, human-directed</div>
+      <div class="diff-item-desc">I use modern AI tools to work faster and smarter — but every strategic decision, creative direction, and quality judgment is mine. Technology serves the vision, not the other way around.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work-section" id="work">
+  <div class="work-header reveal">
+    <h2 class="work-title">Selected <em>work</em></h2>
+    <p class="work-sub">Full case studies shared during our discovery conversation.</p>
+  </div>
+  <div class="work-grid">
+    <div class="wi reveal" style="grid-column:span 7;min-height:500px;cursor:pointer;" onclick="openProject('capegrace')">
+      <div class="wi-bg" style="background:linear-gradient(135deg,#2C1A12,#4A2828);"></div>
+      <div class="wi-grain"></div>
+      <div class="wi-cat">Hospitality · Cape Town</div>
+      <div class="wi-overlay">
+        <div class="wi-info-cat">Brand Content Day · EN</div>
+        <div class="wi-name">Cape Grace Hotel</div>
+        <div class="wi-desc">Atmosphere, spaces and the feeling of place — captured in one day.</div>
+        <div style="margin-top:14px;display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--burg3);">View project <span style="font-size:14px">→</span></div>
+      </div>
+    </div>
+    <div class="wi reveal reveal-delay-1" style="grid-column:span 5;min-height:240px;cursor:pointer;" onclick="openProject('quilo')">
+      <div class="wi-bg" style="background:linear-gradient(135deg,#1A2018,#2C3820);"></div>
+      <div class="wi-grain"></div>
+      <div class="wi-cat">Hair & Beauty · Brussels</div>
+      <div class="wi-overlay">
+        <div class="wi-info-cat">Brand Content Day · FR/NL</div>
+        <div class="wi-name">Quilo Hair Studio</div>
+        <div class="wi-desc">Bilingual brand content for a premium Brussels salon.</div>
+        <div style="margin-top:14px;display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--burg3);">View project <span style="font-size:14px">→</span></div>
+      </div>
+    </div>
+    <div class="wi reveal reveal-delay-2" style="grid-column:span 5;min-height:240px;cursor:pointer;" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">
+      <div class="wi-bg" style="background:linear-gradient(135deg,#1A1828,#282040);"></div>
+      <div class="wi-grain"></div>
+      <div class="wi-cat">Your brand could be here</div>
+      <div class="wi-overlay">
+        <div class="wi-info-cat">Currently accepting clients for 2026</div>
+        <div class="wi-name">Let's create something</div>
+        <div class="wi-desc">Book a discovery call to start the conversation.</div>
+        <div style="margin-top:14px;display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--burg3);">Get in touch <span style="font-size:14px">→</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div class="booking-bg"></div>
+  <div class="booking-inner">
+    <div class="booking-eyebrow reveal">Book a discovery call</div>
+    <h2 class="booking-title reveal reveal-delay-1">Let's talk about<br>your <em>brand.</em></h2>
+    <p class="booking-sub reveal reveal-delay-2">A free 30-minute call to understand your brand, your goals and whether we're a good fit. No pressure, no pitch — just a real conversation.</p>
+    <div class="calendly-wrap reveal reveal-delay-2">
+      <div class="calendly-placeholder">
+        <div class="calendly-placeholder-icon">📅</div>
+        <div class="calendly-placeholder-title">Your booking calendar goes here</div>
+        <div class="calendly-placeholder-text">Replace this placeholder with your Calendly embed code. Instructions in the HTML comments above.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div>
+    <div class="contact-eyebrow reveal">Or send a message</div>
+    <h2 class="contact-title reveal reveal-delay-1">Tell me about<br>your <em>brand.</em></h2>
+    <p class="contact-body reveal reveal-delay-2">I don't take on every project — I take on the right ones. If your brand has a story worth telling beautifully, I'd love to hear it.</p>
+    <div class="contact-detail reveal reveal-delay-2"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a5cdc0c9c9cae5d6d1d0c1cccacfcac4cbcbc08bc6cac8">[email&#160;protected]</a></div>
+    <div class="contact-detail reveal reveal-delay-2">Belgium, working across Europe</div>
+    <div class="contact-detail reveal reveal-delay-2">English · French · Dutch</div>
+  </div>
+  <div class="reveal reveal-delay-1">
+    <form class="form" onsubmit="return false;">
+      <div class="form-group"><label class="form-label">Your name</label><input type="text" class="form-input" placeholder="First and last name"></div>
+      <div class="form-group"><label class="form-label">Brand or company</label><input type="text" class="form-input" placeholder="Your brand name"></div>
+      <div class="form-group"><label class="form-label">Email address</label><input type="email" class="form-input" placeholder="hello@yourbrand.com"></div>
+      <div class="form-group"><label class="form-label">What are you looking for?</label>
+        <select class="form-select form-input">
+          <option value="" disabled selected>Select a service</option>
+          <option>Brand Content Day — €2,400</option>
+          <option>Creative Retainer — €2,000/month</option>
+          <option>Brand Direction Call — €350</option>
+          <option>Not sure yet — let's talk</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Tell me about your brand</label><textarea class="form-textarea form-input" placeholder="What do you make, who is it for, and what do you need?"></textarea></div>
+      <button type="submit" class="form-submit"><span>Send message →</span></button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Studio Joanne</div>
+  <div class="footer-mid">Trilingual brand content for premium businesses — Belgium & Europe</div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#booking">Book a call</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Cursor
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.08;ry+=(my-ry)*.08;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.svc-card,.wi,.form-select,.btn-secondary').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'))});
+
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)});
+
+// Reveal
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal,.belief-row').forEach(el=>obs.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+</script>
+
+<!-- PROJECT OVERLAY -->
+<div id="project-overlay">
+  <button class="proj-close" onclick="closeProject()">&times;</button>
+  <div id="project-content"></div>
+</div>
+
+<script>
+const projects = {
+  capegrace: {
+    hero_bg: 'linear-gradient(135deg, #3D2218 0%, #5A3830 30%, #4A2828 60%, #2C1A12 100%)',
+    eyebrow: 'Brand Content Day &middot; Hospitality',
+    title: 'Cape Grace <em>Hotel</em>',
+    subtitle: 'A historic luxury hotel on Cape Town\'s V&A Waterfront. Known for intimate atmosphere, waterfront views, and understated elegance. The challenge: capture the feeling of being there in content that works across digital channels.',
+    meta: [
+      {label:'Client',value:'Cape Grace Hotel'},
+      {label:'Location',value:'Cape Town, South Africa'},
+      {label:'Service',value:'Brand Content Day'},
+      {label:'Language',value:'English'},
+      {label:'Timeline',value:'1 day filming, 7 days delivery'}
+    ],
+    brief_title: 'Capture the <em>feeling</em> of place.',
+    brief_text: [
+      'Cape Grace didn\'t need another set of polished hotel photos. They had those. What they lacked was content that made someone feel what it\'s like to actually be there \u2014 the light on the water at golden hour, the quiet intimacy of the library bar, the way the staff remembers your name.',
+      'The goal was to create a content library that could fuel their social media, website, and booking campaigns for months \u2014 all from a single, strategically planned filming day.'
+    ],
+    approach_title: 'One day. Every angle. <em>Every mood.</em>',
+    approach_items: [
+      'Pre-production deep-dive with the hotel\'s marketing team to understand brand positioning and target guest profile',
+      'Shot list organized by time-of-day to capture the hotel in its best natural light \u2014 dawn on the waterfront, afternoon in the spa, golden hour on the terrace',
+      'Directed both atmospheric B-roll and guest-perspective sequences \u2014 the experience through the eyes of someone arriving and discovering the space',
+      'Captured wide establishing shots for website heroes and intimate detail shots for social storytelling',
+      'Filmed candid moments with staff to humanize the brand \u2014 the sommelier, the concierge, the quiet rituals of hospitality'
+    ],
+    gallery: [
+      {bg:'linear-gradient(135deg, #4A3020, #6A4838)',caption:'The waterfront terrace at golden hour'},
+      {bg:'linear-gradient(135deg, #2A1A18, #4A3028)',caption:'Library bar \u2014 intimate lighting, warm textures'},
+      {bg:'linear-gradient(135deg, #3A2A20, #5A4030)',caption:'Suite detail \u2014 attention to craft'},
+      {bg:'linear-gradient(135deg, #1A2028, #3A4050)',caption:'V&A Waterfront at dawn \u2014 the opening shot'}
+    ],
+    deliverables_title: 'A complete content <em>library.</em>',
+    deliverables: [
+      '1 hero brand video (3 min) \u2014 a cinematic journey through the hotel, from arrival to evening',
+      '6 short-form clips (15\u201345 sec each) \u2014 the spa, dining, rooms, waterfront, bar, and staff',
+      'Written captions crafted in the hotel\'s brand voice with soft CTAs driving to booking',
+      'Full raw footage archive \u2014 4+ hours of organized B-roll for future ads and campaigns',
+      'Brand direction summary documenting the visual language and content pillars'
+    ],
+    results: [
+      {num:'6',label:'Months of content from 1 day'},
+      {num:'12',label:'Ready-to-post content pieces'},
+      {num:'1',label:'Cohesive brand story'}
+    ],
+    testimonial: {
+      text: 'Replace this with a real quote from the Cape Grace team about the experience and results.',
+      author: 'Marketing Director \u2014 Cape Grace Hotel, Cape Town'
+    },
+    video_bg: 'linear-gradient(135deg, #3D2218 0%, #5A3830 40%, #4A2828 70%, #2C1A12 100%)',
+    video_label: 'Hero Brand Video \u2014 3 min'
+  },
+  quilo: {
+    hero_bg: 'linear-gradient(135deg, #1A2A18 0%, #2C3820 40%, #1A2018 100%)',
+    eyebrow: 'Brand Content Day &middot; Hair & Beauty',
+    title: 'Quilo Hair <em>Studio</em>',
+    subtitle: 'A premium Brussels hair salon that treats every appointment as a personal experience. The challenge: make the online presence match the quality of the in-chair experience.',
+    meta: [
+      {label:'Client',value:'Quilo Hair Studio'},
+      {label:'Location',value:'Brussels, Belgium'},
+      {label:'Service',value:'Brand Content Day'},
+      {label:'Languages',value:'French & Dutch'},
+      {label:'Timeline',value:'1 day filming, 7 days delivery'}
+    ],
+    brief_title: 'Close the gap between <em>experience</em> and presence.',
+    brief_text: [
+      'Quilo had a 4.8-star Google rating and loyal clients \u2014 but their Instagram told a different story. Inconsistent posting, phone-quality photos, no video content. The brand people loved in person was invisible online.',
+      'The goal: build a content library that captured the calm, considered, personal atmosphere of Quilo \u2014 and give them material to show up consistently for months.'
+    ],
+    approach_title: 'Strategy first. <em>Then camera.</em>',
+    approach_items: [
+      'Brand deep-dive: understanding Quilo\'s philosophy and why regulars keep coming back \u2014 the personal attention, expertise, unhurried atmosphere',
+      'Content strategy around four pillars: The Craft, The Space, The Knowledge, and The Human',
+      'Filming planned around a real client appointment \u2014 genuine interaction, not staged performance',
+      'Natural light throughout to reflect the salon\'s warm, calm aesthetic',
+      'Bilingual content from the start \u2014 French for Wallonia/Brussels, Dutch for Flanders'
+    ],
+    gallery: [
+      {bg:'linear-gradient(135deg, #2A3A20, #3A4A30)',caption:'The styling chair \u2014 natural light, calm atmosphere'},
+      {bg:'linear-gradient(135deg, #1A2A18, #2A3828)',caption:'Detail shot \u2014 hands at work, expertise in motion'},
+      {bg:'linear-gradient(135deg, #2A2A1A, #3A3A28)',caption:'Before & after \u2014 the transformation reveal'},
+      {bg:'linear-gradient(135deg, #1A2018, #2A3020)',caption:'The space \u2014 warm textures, intentional design'}
+    ],
+    deliverables_title: 'Bilingual content that <em>feels like Quilo.</em>',
+    deliverables: [
+      '1 hero brand video (2.5 min) \u2014 the Quilo experience from arrival to reveal',
+      '5 short-form clips \u2014 transformation, process, salon tour, hair tip, behind-the-scenes',
+      'Captions in French and Dutch \u2014 natively crafted, not translated',
+      'Full raw footage archive \u2014 organized B-roll for ongoing social use',
+      'Brand direction summary with visual guidelines and 90-day roadmap'
+    ],
+    results: [
+      {num:'2',label:'Languages, natively crafted'},
+      {num:'11',label:'Ready-to-post content pieces'},
+      {num:'90',label:'Day content roadmap included'}
+    ],
+    testimonial: {
+      text: 'Replace this with a real quote from the Quilo owner about what changed for their brand.',
+      author: 'Owner \u2014 Quilo Hair Studio, Brussels'
+    },
+    video_bg: 'linear-gradient(135deg, #1A2A18 0%, #2C3820 40%, #1A2018 100%)',
+    video_label: 'Hero Brand Video \u2014 2.5 min'
+  }
+};
+
+function openProject(id) {
+  var p = projects[id];
+  if (!p) return;
+  var metaH = p.meta.map(function(m){return '<div class="proj-meta-item"><span class="proj-meta-label">'+m.label+'</span><span class="proj-meta-val">'+m.value+'</span></div>'}).join('');
+  var briefH = p.brief_text.map(function(t){return '<p class="proj-text">'+t+'</p>'}).join('');
+  var appH = p.approach_items.map(function(a){return '<li>'+a+'</li>'}).join('');
+  var galH = p.gallery.map(function(g){return '<div class="proj-gallery-item"><div class="proj-gallery-item-bg" style="background:'+g.bg+';"></div><div class="proj-gallery-caption">'+g.caption+'</div></div>'}).join('');
+  var delH = p.deliverables.map(function(d){return '<li>'+d+'</li>'}).join('');
+  var resH = p.results.map(function(r){return '<div class="proj-result-item"><div class="proj-result-num">'+r.num+'</div><div class="proj-result-label">'+r.label+'</div></div>'}).join('');
+
+  document.getElementById('project-content').innerHTML =
+    '<div class="proj-hero"><div class="proj-hero-bg" style="background:'+p.hero_bg+';"></div><div class="proj-hero-overlay"></div><div class="proj-hero-content"><div class="proj-eyebrow">'+p.eyebrow+'</div><h1 class="proj-title">'+p.title+'</h1><p class="proj-sub">'+p.subtitle+'</p><div class="proj-meta-row">'+metaH+'</div></div></div>' +
+    '<div class="proj-body"><div class="proj-section-label">The Brief</div><h2 class="proj-h2">'+p.brief_title+'</h2>'+briefH +
+    '<div class="proj-gallery">'+galH+'</div>' +
+    '<div class="proj-section-label" style="margin-top:56px">The Approach</div><h2 class="proj-h2">'+p.approach_title+'</h2><ul class="proj-list">'+appH+'</ul>' +
+    '<div class="proj-section-label" style="margin-top:56px">What We Delivered</div><h2 class="proj-h2">'+p.deliverables_title+'</h2><ul class="proj-list">'+delH+'</ul>' +
+    '<div class="proj-results">'+resH+'</div>' +
+    '<div class="proj-testimonial"><div class="proj-testimonial-text">\u201C'+p.testimonial.text+'\u201D</div><div class="proj-testimonial-author">\u2014 '+p.testimonial.author+'</div></div></div>' +
+    '<div class="proj-cta"><div class="proj-cta-text"><div class="proj-cta-label">Have a similar project in mind?</div><div class="proj-cta-title">Let\u2019s tell your<br>brand\u2019s <em>story.</em></div></div><a href="#contact" onclick="closeProject()" class="proj-cta-btn">Get in touch \u2192</a></div>';
+
+  document.getElementById('project-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('project-overlay').scrollTop = 0;
+}
+
+function closeProject() {
+  document.getElementById('project-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeProject(); });
+</script>
+
+</body>
+</html>

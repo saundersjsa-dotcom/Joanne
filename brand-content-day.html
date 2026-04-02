@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Content Day — €2,400 — Studio Joanne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=DM+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--burg:#5C1F2E;--burg2:#8B3A4D;--burg3:#C9849A;--cream:#F7F3EE;--dark:#0F0C0A;--dark2:#1A1410;--dark3:#2C2018;--stone:#C9B99A;--muted:#8A7A6A;--font-d:'Playfair Display',Georgia,serif;--font-b:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--cream);font-family:var(--font-b);font-weight:300;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:28px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(15,12,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(247,243,238,.05)}
+.nav-logo{font-family:var(--font-d);font-size:15px;font-weight:400;font-style:italic;letter-spacing:.2em;color:var(--cream);text-decoration:none}
+.nav-back{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,238,.5);text-decoration:none;transition:color .3s}.nav-back:hover{color:var(--cream)}
+
+.sp{padding:120px 120px}
+.label{font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--burg3);margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.label::before{content:'';width:24px;height:1px;background:var(--burg3)}
+.label-dk{color:var(--burg)}.label-dk::before{background:var(--burg)}
+
+/* HERO */
+.offer-hero{min-height:80vh;padding:160px 120px 100px;position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.offer-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(92,31,46,.25) 0%,transparent 60%)}
+.offer-hero::after{content:'Create';position:absolute;bottom:-30px;right:-20px;font-family:var(--font-d);font-size:clamp(80px,14vw,200px);font-weight:900;font-style:italic;color:rgba(247,243,238,.03);line-height:1;pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:800px}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--burg3);margin-bottom:28px;display:flex;align-items:center;gap:14px;opacity:0;animation:fu .8s .1s forwards}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--burg3)}
+.hero-title{font-family:var(--font-d);font-size:clamp(42px,5.5vw,76px);font-weight:700;line-height:1.05;color:var(--cream);margin-bottom:28px;opacity:0;animation:fu .8s .25s forwards}
+.hero-title em{font-style:italic;color:var(--burg3)}
+.hero-sub{font-size:18px;font-weight:300;color:rgba(247,243,238,.55);line-height:1.8;max-width:560px;margin-bottom:44px;opacity:0;animation:fu .8s .4s forwards}
+.meta-row{display:flex;gap:48px;flex-wrap:wrap;opacity:0;animation:fu .8s .55s forwards}
+.meta-item{display:flex;flex-direction:column;gap:6px}
+.meta-label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,238,.3)}
+.meta-val{font-family:var(--font-d);font-size:22px;font-weight:400;font-style:italic;color:var(--cream)}
+
+/* BANNER */
+.banner{background:var(--burg);padding:48px 120px;display:flex;justify-content:center;align-items:center;gap:64px;flex-wrap:wrap}
+.banner-item{text-align:center}
+.banner-num{font-family:var(--font-d);font-size:clamp(36px,4vw,52px);font-weight:300;font-style:italic;color:var(--cream);line-height:1;margin-bottom:6px}
+.banner-label{font-size:11px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:rgba(247,243,238,.55)}
+
+/* EMPATHY */
+.empathy{background:var(--dark2);border-top:1px solid rgba(247,243,238,.05)}
+.empathy-inner{max-width:700px}
+.em-title{font-family:var(--font-d);font-size:clamp(26px,3vw,38px);font-weight:400;line-height:1.4;color:var(--cream);margin-bottom:36px}
+.em-title em{font-style:italic;color:var(--burg3)}
+.em-text{font-size:16px;font-weight:300;color:rgba(247,243,238,.45);line-height:1.9;margin-bottom:18px}
+
+/* FIT */
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:48px}
+.fit-h{font-family:var(--font-d);font-size:22px;font-weight:400;margin-bottom:28px;display:flex;align-items:center;gap:14px}
+.fit-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.fit-y .fit-icon{background:rgba(92,31,46,.4);color:var(--burg3)}
+.fit-n .fit-icon{background:rgba(247,243,238,.06);color:rgba(247,243,238,.3)}
+.fit-y .fit-h{color:var(--cream)}.fit-n .fit-h{color:rgba(247,243,238,.4)}
+.fit-item{padding:16px 0;border-bottom:1px solid rgba(247,243,238,.06);font-size:14px;font-weight:300;line-height:1.7}
+.fit-y .fit-item{color:rgba(247,243,238,.65)}.fit-n .fit-item{color:rgba(247,243,238,.3)}
+.fit-item:first-child{border-top:1px solid rgba(247,243,238,.06)}
+
+/* DELIVERABLES */
+.del-section{background:var(--cream);color:var(--dark)}
+.del-title{font-family:var(--font-d);font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.1;color:var(--dark2);margin-bottom:64px}
+.del-title em{font-style:italic;color:var(--burg)}
+.del-list{display:flex;flex-direction:column}
+.del-row{display:grid;grid-template-columns:50px 1fr 1fr;gap:36px;padding:32px 0;border-bottom:1px solid rgba(26,20,16,.08);align-items:start}
+.del-row:first-child{border-top:1px solid rgba(26,20,16,.08)}
+.del-num{font-family:var(--font-d);font-size:14px;font-style:italic;color:var(--burg2);padding-top:4px}
+.del-name{font-family:var(--font-d);font-size:20px;font-weight:400;color:var(--dark2);margin-bottom:6px}
+.del-desc{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7}
+.del-detail{font-size:12px;font-weight:300;color:var(--muted);line-height:2;padding-top:4px}
+.del-detail span{display:block;padding:4px 0;border-bottom:1px solid rgba(26,20,16,.04)}
+
+/* PROCESS */
+.proc-section{background:var(--dark)}
+.proc-title{font-family:var(--font-d);font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.1;color:var(--cream);margin-bottom:64px}
+.proc-title em{font-style:italic;color:var(--burg3)}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+.timeline::before{content:'';position:absolute;top:24px;left:24px;right:24px;height:1px;background:rgba(201,132,154,.2)}
+.tl-item{padding:0 28px;position:relative}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--burg);border:3px solid var(--dark);margin-bottom:28px;position:relative;z-index:1;box-shadow:0 0 0 1px var(--burg3)}
+.tl-phase{font-family:var(--font-d);font-size:11px;font-style:italic;color:var(--burg3);margin-bottom:8px}
+.tl-title{font-family:var(--font-d);font-size:20px;font-weight:400;color:var(--cream);margin-bottom:10px}
+.tl-desc{font-size:13px;font-weight:300;color:rgba(247,243,238,.4);line-height:1.7;margin-bottom:16px}
+.tl-bullets{font-size:11px;font-weight:300;color:rgba(247,243,238,.3);line-height:2}
+.tl-bullets span{display:block}
+.tl-time{margin-top:16px;font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--burg3);padding-top:12px;border-top:1px solid rgba(247,243,238,.06)}
+
+/* TESTIMONIAL */
+.testi{background:var(--burg);padding:100px 120px;position:relative;overflow:hidden}
+.testi::before{content:'\201C';position:absolute;top:-40px;left:80px;font-family:var(--font-d);font-size:300px;font-weight:900;color:rgba(247,243,238,.06);line-height:1}
+.testi-inner{position:relative;z-index:1;max-width:700px}
+.testi-text{font-family:var(--font-d);font-size:clamp(20px,2.5vw,28px);font-weight:400;font-style:italic;color:var(--cream);line-height:1.6;margin-bottom:28px}
+.testi-author{font-size:13px;font-weight:400;color:rgba(247,243,238,.5);display:flex;align-items:center;gap:14px}
+.testi-author::before{content:'';width:24px;height:1px;background:rgba(247,243,238,.3)}
+
+/* FAQ */
+.faq-section{background:var(--dark2)}
+.faq-title{font-family:var(--font-d);font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--cream);margin-bottom:48px}
+.faq-title em{font-style:italic;color:var(--burg3)}
+.faq-item{border-bottom:1px solid rgba(247,243,238,.06);padding:24px 0;cursor:pointer}
+.faq-item:first-child{border-top:1px solid rgba(247,243,238,.06)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-d);font-size:17px;font-weight:400;color:var(--cream);transition:color .3s}
+.faq-q:hover{color:var(--burg3)}
+.faq-arr{font-size:18px;color:var(--burg3);transition:transform .3s}
+.faq-item.open .faq-arr{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s,padding .4s}
+.faq-item.open .faq-a{max-height:200px;padding-top:14px}
+.faq-a-text{font-size:14px;font-weight:300;color:rgba(247,243,238,.45);line-height:1.8;max-width:600px}
+
+/* CTA */
+.cta{padding:120px 120px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(92,31,46,.3) 0%,transparent 50%)}
+.cta-inner{position:relative;z-index:1}
+.cta-title{font-family:var(--font-d);font-size:clamp(36px,5vw,64px);font-weight:700;line-height:1.1;color:var(--cream);margin-bottom:20px}
+.cta-title em{font-style:italic;color:var(--burg3)}
+.cta-sub{font-size:16px;font-weight:300;color:rgba(247,243,238,.45);line-height:1.8;max-width:460px;margin:0 auto 24px}
+.cta-btn{display:inline-flex;align-items:center;gap:14px;background:var(--burg);color:var(--cream);text-decoration:none;padding:20px 48px;font-family:var(--font-b);font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;transition:background .3s}
+.cta-btn:hover{background:var(--cream);color:var(--dark2)}
+.cta-reassure{margin-top:28px;padding:24px 32px;background:rgba(247,243,238,.03);border:1px solid rgba(247,243,238,.06);display:inline-block;max-width:460px;text-align:left}
+.cta-reassure-label{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--burg3);margin-bottom:10px}
+.cta-reassure-text{font-size:13px;font-weight:300;color:rgba(247,243,238,.45);line-height:1.7}
+
+/* UPSELL */
+.upsell{padding:64px 120px;background:var(--dark2);border-top:1px solid rgba(247,243,238,.05)}
+.upsell-inner{max-width:800px;margin:0 auto;display:flex;gap:48px;align-items:center;flex-wrap:wrap}
+.upsell-info{flex:1;min-width:280px}
+.upsell-tag{font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--burg3);margin-bottom:14px}
+.upsell-title{font-family:var(--font-d);font-size:clamp(22px,3vw,32px);font-weight:700;line-height:1.2;color:var(--cream);margin-bottom:14px}
+.upsell-title em{font-style:italic;color:var(--burg3)}
+.upsell-desc{font-size:14px;font-weight:300;color:rgba(247,243,238,.45);line-height:1.8;margin-bottom:20px}
+.upsell-price{display:flex;align-items:baseline;gap:12px}
+.upsell-price-main{font-family:var(--font-d);font-size:28px;font-weight:400;font-style:italic;color:var(--cream)}
+.upsell-badge{font-size:11px;font-weight:500;letter-spacing:.1em;color:var(--burg3);background:rgba(92,31,46,.3);padding:4px 10px}
+.upsell-btn{display:inline-flex;align-items:center;gap:12px;background:var(--burg);color:var(--cream);text-decoration:none;padding:16px 32px;font-family:var(--font-b);font-size:10px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;transition:background .3s;white-space:nowrap;flex-shrink:0}
+.upsell-btn:hover{background:var(--cream);color:var(--dark2)}
+
+/* BOTTOM */
+.quiz-bar{padding:48px 120px;background:var(--dark);border-top:1px solid rgba(247,243,238,.05);text-align:center}
+.quiz-bar-text{font-size:14px;font-weight:300;color:rgba(247,243,238,.35);margin-bottom:12px}
+.quiz-bar a{font-family:var(--font-d);font-size:18px;font-style:italic;color:var(--burg3);text-decoration:none;border-bottom:1px solid rgba(201,132,154,.3);padding-bottom:2px}
+.bottom-nav{padding:32px 120px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(247,243,238,.04);background:var(--dark)}
+.bottom-nav a{font-size:10px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,243,238,.3);text-decoration:none;transition:color .3s}
+.bottom-nav a:hover{color:var(--burg3)}
+
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:20px 24px}.offer-hero,.sp,.cta,.upsell,.quiz-bar{padding-left:24px;padding-right:24px}
+  .offer-hero{padding-top:140px;min-height:auto}.banner{padding:36px 24px;gap:32px}
+  .fit-grid{grid-template-columns:1fr;gap:48px}.del-row{grid-template-columns:1fr;gap:8px}.del-num{display:none}
+  .timeline{grid-template-columns:1fr;gap:32px}.timeline::before{display:none}
+  .testi{padding:80px 24px}.bottom-nav{padding:24px;flex-direction:column;gap:16px}
+  .upsell-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav><a href="index.html" class="nav-logo">Studio Joanne</a><a href="index.html#services" class="nav-back">← All services</a></nav>
+
+<!-- HERO -->
+<section class="offer-hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Flagship offer · Strategy + Production</div>
+    <h1 class="hero-title">Brand Content<br><em>Day</em></h1>
+    <p class="hero-sub">Other creators show up and film. I show up having already spent a week understanding your brand — so every frame has a purpose. Strategy and production, one person, one day.</p>
+    <div class="meta-row">
+      <div class="meta-item"><span class="meta-label">Investment</span><span class="meta-val">€2,400</span></div>
+      <div class="meta-item"><span class="meta-label">Filming</span><span class="meta-val">1 full day</span></div>
+      <div class="meta-item"><span class="meta-label">Delivery</span><span class="meta-val">7 days</span></div>
+      <div class="meta-item"><span class="meta-label">Languages</span><span class="meta-val">2 included</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER -->
+<div class="banner">
+  <div class="banner-item"><div class="banner-num">1</div><div class="banner-label">Brand deep-dive</div></div>
+  <div class="banner-item"><div class="banner-num">1</div><div class="banner-label">Hero video</div></div>
+  <div class="banner-item"><div class="banner-num">4–6</div><div class="banner-label">Short-form clips</div></div>
+  <div class="banner-item"><div class="banner-num">2</div><div class="banner-label">Languages</div></div>
+  <div class="banner-item"><div class="banner-num">7</div><div class="banner-label">Days to delivery</div></div>
+</div>
+
+<!-- EMPATHY -->
+<section class="empathy sp reveal">
+  <div class="empathy-inner">
+    <h2 class="em-title">You know you need video content.<br>But content without strategy is just <em>beautiful noise.</em></h2>
+    <p class="em-text">You've seen what professional content does for other brands. The engagement, the trust, the sales. But most videographers just show up, point a camera, and deliver footage that looks nice but doesn't actually tell your story or move anyone to act.</p>
+    <p class="em-text">The Brand Content Day is different because it starts with thinking before it starts with filming. I spend the first week understanding your brand deeply — your narrative, your audience, what makes you different — and build a creative brief that ensures every moment of filming is intentional. You get strategy and production from the same person, in one streamlined process.</p>
+  </div>
+</section>
+
+<!-- FIT -->
+<section class="sp reveal" style="background:var(--dark);border-top:1px solid rgba(247,243,238,.05)">
+  <div class="label">Is this the right fit?</div>
+  <div class="fit-grid">
+    <div class="fit-y">
+      <div class="fit-h"><span class="fit-icon">✓</span> This is for you if…</div>
+      <div class="fit-item">You have a brand that's already making money but your content doesn't reflect the quality of what you offer</div>
+      <div class="fit-item">You want strategic content — not just pretty footage, but content built to connect and convert</div>
+      <div class="fit-item">You value working with one person who understands your brand, not a revolving door of freelancers</div>
+      <div class="fit-item">You're based in Belgium, or willing to cover travel for shoots elsewhere in Europe</div>
+      <div class="fit-item">You operate in multiple languages and need content that resonates natively in each</div>
+    </div>
+    <div class="fit-n">
+      <div class="fit-h"><span class="fit-icon">✕</span> Probably not for you if…</div>
+      <div class="fit-item">You just need someone to take a few photos — this is a full-day strategic content production</div>
+      <div class="fit-item">You need 30+ pieces of content — I deliver fewer, better pieces that actually work</div>
+      <div class="fit-item">You want to micro-manage every frame — I work best with trust in the creative process</div>
+      <div class="fit-item">You need content by tomorrow — I need at least 2 weeks to prepare a shoot worth your investment</div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="del-section sp reveal">
+  <div class="label label-dk">What you receive</div>
+  <h2 class="del-title">Strategy + content.<br>One day, <em>one investment.</em></h2>
+  <div class="del-list">
+    <div class="del-row"><div class="del-num">01</div><div><div class="del-name">Brand Deep-Dive & Creative Brief</div><div class="del-desc">Before any camera rolls, I spend 90 minutes understanding your brand — your story, your audience, your competitors, your goals. From that, I build a full creative brief and shot list. This is the strategic foundation that makes everything else better.</div></div><div class="del-detail"><span>90-minute recorded strategy session</span><span>Brand questionnaire beforehand</span><span>Creative brief + shot list delivered</span></div></div>
+    <div class="del-row"><div class="del-num">02</div><div><div class="del-name">Hero Long-Form Video</div><div class="del-desc">One polished, story-driven video (2–5 minutes) that captures your brand's essence. For your website, YouTube, or a campaign launch.</div></div><div class="del-detail"><span>Fully edited with music + color grading</span><span>Subtitles in 2 languages</span><span>Optimized for web and social</span></div></div>
+    <div class="del-row"><div class="del-num">03</div><div><div class="del-name">4–6 Short-Form Clips</div><div class="del-desc">Vertical, punchy clips (15–60 sec) designed for Reels, TikTok, and Shorts. Each one tells a micro-story that stands on its own.</div></div><div class="del-detail"><span>Edited with hooks + transitions</span><span>Cover frames for your grid</span><span>Each serves a different content pillar</span></div></div>
+    <div class="del-row"><div class="del-num">04</div><div><div class="del-name">Captions & Copy in 2 Languages</div><div class="del-desc">Every piece of content comes with a ready-to-post caption in two languages of your choice (EN/FR/NL) — written in your brand voice, not Google Translated.</div></div><div class="del-detail"><span>Native-quality copy, not translations</span><span>CTAs and hashtag strategy included</span><span>Third language available: +€200</span></div></div>
+    <div class="del-row"><div class="del-num">05</div><div><div class="del-name">Raw Footage Archive</div><div class="del-desc">The complete raw footage library from the day — B-roll, outtakes, everything. Organized and delivered via cloud. Yours to keep and use.</div></div><div class="del-detail"><span>Organized by scene and type</span><span>Cloud transfer within 7 days</span></div></div>
+    <div class="del-row"><div class="del-num">06</div><div><div class="del-name">Brand Direction Summary</div><div class="del-desc">A concise document capturing your brand narrative, visual direction, and content pillars — the strategic thinking behind the content, formatted so you (or anyone you work with) can stay on-brand.</div></div><div class="del-detail"><span>Brand narrative + voice guidelines</span><span>Visual direction references</span><span>Content pillar framework</span></div></div>
+    <div class="del-row"><div class="del-num">07</div><div><div class="del-name">30-Day Performance Review</div><div class="del-desc">One month after delivery, a 20-minute call reviewing how your content performed. What got saves, what drove action, and what to create next. This is where most freelancers disappear — I don't.</div></div><div class="del-detail"><span>Performance analysis</span><span>Recommendations for next content</span><span>Natural moment to discuss retainer</span></div></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="proc-section sp reveal">
+  <div class="label">How it works</div>
+  <h2 class="proc-title">From call to content <em>in three phases.</em></h2>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-phase">Phase 01 · Before</div><div class="tl-title">Strategy & pre-production</div><div class="tl-desc">After our discovery call, I send a brand questionnaire and schedule the 90-minute deep-dive. From that, I develop the creative brief, shot list, and mood board. You approve — then we're set.</div><div class="tl-bullets"><span>Brand questionnaire + deep-dive</span><span>Creative brief + mood board</span><span>Shot list + location scouting</span><span>Wardrobe + styling guidance</span></div><div class="tl-time">1–2 weeks before filming</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-phase">Phase 02 · During</div><div class="tl-title">The filming day</div><div class="tl-desc">I arrive with everything we need. I direct, I film, I manage the energy. Your job is to be yourself. Most clients are surprised how natural and enjoyable it feels.</div><div class="tl-bullets"><span>Full day (6–8 hours typically)</span><span>Creative direction on set</span><span>Multiple setups and locations</span><span>Real-time review of key shots</span></div><div class="tl-time">1 full day</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-phase">Phase 03 · After</div><div class="tl-title">Edit, deliver, review</div><div class="tl-desc">Within 7 days: all edited content, captions, and raw footage delivered. One revision round included. 30 days later: the performance review call.</div><div class="tl-bullets"><span>First draft within 5 working days</span><span>One revision round included</span><span>Final delivery within 7 days</span><span>30-day performance review call</span></div><div class="tl-time">7 days + 30-day review</div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testi reveal">
+  <div class="testi-inner">
+    <p class="testi-text">Replace this with a real testimonial from a Brand Content Day client. Something specific about the experience and results — not just "she was great."</p>
+    <div class="testi-author">Client Name — Brand Name, Location</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section sp reveal">
+  <h2 class="faq-title">Common <em>questions</em></h2>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What makes this different from hiring a videographer?<span class="faq-arr">+</span></div><div class="faq-a"><div class="faq-a-text">A videographer shows up and films what you tell them to. I show up having already spent a week understanding your brand — your story, your audience, what makes you different. The creative brief I build means every frame has strategic intent behind it. You get a creative director and a production team in one person.</div></div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Do you bring all the equipment?<span class="faq-arr">+</span></div><div class="faq-a"><div class="faq-a-text">Yes. Camera, lenses, lighting, audio — I come fully equipped. You provide access to your space and your time. That's it.</div></div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What if I need content in all three languages?<span class="faq-arr">+</span></div><div class="faq-a"><div class="faq-a-text">Two languages are included in the €2,400 price. The third language can be added for €200 — full native-quality captions and copy, not translations. Or upgrade to the Creative Retainer, which includes all three languages as standard.</div></div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What if I don't like how I look on camera?<span class="faq-arr">+</span></div><div class="faq-a"><div class="faq-a-text">Almost every client says this before our first shoot. Part of my job is directing you in a way that feels natural, not performative. By the end of the day, you'll be surprised how comfortable it felt.</div></div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Where do you film?<span class="faq-arr">+</span></div><div class="faq-a"><div class="faq-a-text">Anywhere in Belgium is included. For shoots elsewhere in Europe, I ask that you cover travel and accommodation. I've filmed across Belgium, the Netherlands, France, and South Africa.</div></div></div>
+  <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What about the content license for ads?<span class="faq-arr">+</span></div><div class="faq-a"><div class="faq-a-text">You own full rights for organic use across all your channels, permanently. Paid advertising usage (Meta ads, Google ads, etc.) is included for 12 months from delivery. After that, the ad license renews for a flat €300/year.</div></div></div>
+</section>
+
+<!-- CTA -->
+<section class="cta reveal">
+  <div class="cta-inner">
+    <h2 class="cta-title">One day. Strategy + content.<br><em>No compromise.</em></h2>
+    <p class="cta-sub">Book a free 30-minute discovery call. We'll discuss your brand, your goals, and whether a Brand Content Day is the right next step.</p>
+    <a href="index.html#booking" class="cta-btn">Book your free discovery call →</a>
+    <div class="cta-reassure">
+      <div class="cta-reassure-label">What happens when you click</div>
+      <div class="cta-reassure-text">You pick a 30-minute slot on my calendar. We have a relaxed conversation about your brand. If it's a fit, I send a clear proposal within 48 hours. If it's not, I'll tell you honestly. No awkward follow-ups.</div>
+    </div>
+  </div>
+</section>
+
+<!-- UPSELL -->
+<div class="upsell">
+  <div class="upsell-inner">
+    <div class="upsell-info">
+      <div class="upsell-tag">Want this every month?</div>
+      <div class="upsell-title">Creative <em>Retainer</em></div>
+      <div class="upsell-desc">Same filming day, same quality — but every month. Plus all three languages, priority scheduling, emergency shoot days on 48h notice, and a creative director who knows your brand deeply.</div>
+      <div class="upsell-price"><span class="upsell-price-main">€2,000/month</span><span class="upsell-badge">SAVE €400/MO</span></div>
+    </div>
+    <a href="creative-retainer.html" class="upsell-btn">Learn more →</a>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-bar">
+  <div class="quiz-bar-text">Not sure which service is right for your brand?</div>
+  <a href="start-here.html">Take the 60-second quiz →</a>
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="index.html#services">← All services</a>
+  <a href="creative-retainer.html">Next: Creative Retainer →</a>
+</div>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add('visible'),obs.unobserve(e.target))})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
