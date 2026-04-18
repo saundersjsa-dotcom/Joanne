@@ -501,7 +501,7 @@ footer{background:var(--dark);padding:48px 120px;display:flex;justify-content:sp
   </div>
   <div class="work-grid">
     <div class="wi reveal" style="grid-column:span 7;min-height:500px;cursor:pointer;" onclick="openProject('capegrace')">
-      <div class="wi-bg" style="background:linear-gradient(135deg,#2C1A12,#4A2828);"></div>
+      <div class="wi-bg" style="background:url('assets/images/cape-grace-hotel/DSC04040-2560.jpg') center/cover no-repeat;"></div>
       <div class="wi-grain"></div>
       <div class="wi-cat">Hospitality · Cape Town</div>
       <div class="wi-overlay">
@@ -519,6 +519,17 @@ footer{background:var(--dark);padding:48px 120px;display:flex;justify-content:sp
         <div class="wi-info-cat">Brand Content Day · FR/NL</div>
         <div class="wi-name">Quilo Hair Studio</div>
         <div class="wi-desc">Bilingual brand content for a premium Brussels salon.</div>
+        <div style="margin-top:14px;display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--burg3);">View project <span style="font-size:14px">→</span></div>
+      </div>
+    </div>
+    <div class="wi reveal reveal-delay-2" style="grid-column:span 7;min-height:500px;cursor:pointer;" onclick="openProject('rovos')">
+      <div class="wi-bg" style="background:url('assets/images/rovos-rail/DSC04274-2560.jpg') center/cover no-repeat;"></div>
+      <div class="wi-grain"></div>
+      <div class="wi-cat">Luxury Travel · Southern Africa</div>
+      <div class="wi-overlay">
+        <div class="wi-info-cat">Brand Content Day · EN</div>
+        <div class="wi-name">Rovos Rail</div>
+        <div class="wi-desc">Nine days, five countries — a moving portrait of the world's most luxurious train.</div>
         <div style="margin-top:14px;display:inline-flex;align-items:center;gap:10px;font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--burg3);">View project <span style="font-size:14px">→</span></div>
       </div>
     </div>
@@ -624,7 +635,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 <script>
 const projects = {
   capegrace: {
-    hero_bg: 'linear-gradient(135deg, #3D2218 0%, #5A3830 30%, #4A2828 60%, #2C1A12 100%)',
+    hero_bg: "url('assets/images/cape-grace-hotel/DSC04008-2560.jpg') center/cover no-repeat",
     eyebrow: 'Brand Content Day &middot; Hospitality',
     title: 'Cape Grace <em>Hotel</em>',
     subtitle: 'A historic luxury hotel on Cape Town\'s V&A Waterfront. Known for intimate atmosphere, waterfront views, and understated elegance. The challenge: capture the feeling of being there in content that works across digital channels.',
@@ -649,10 +660,17 @@ const projects = {
       'Filmed candid moments with staff to humanize the brand \u2014 the sommelier, the concierge, the quiet rituals of hospitality'
     ],
     gallery: [
-      {bg:'linear-gradient(135deg, #4A3020, #6A4838)',caption:'The waterfront terrace at golden hour'},
-      {bg:'linear-gradient(135deg, #2A1A18, #4A3028)',caption:'Library bar \u2014 intimate lighting, warm textures'},
-      {bg:'linear-gradient(135deg, #3A2A20, #5A4030)',caption:'Suite detail \u2014 attention to craft'},
-      {bg:'linear-gradient(135deg, #1A2028, #3A4050)',caption:'V&A Waterfront at dawn \u2014 the opening shot'}
+      {bg:"url('assets/images/cape-grace-hotel/DSC04040-2560.jpg') center/cover no-repeat",caption:'The waterfront terrace at golden hour'},
+      {bg:"url('assets/images/cape-grace-hotel/DSC04008-600.jpg') center/cover no-repeat",caption:'The arrival \u2014 first impressions of light and space'},
+      {bg:"url('assets/images/cape-grace-hotel/DSC04017-600.jpg') center/cover no-repeat",caption:'Bay windows, morning calm'},
+      {bg:"url('assets/images/cape-grace-hotel/DSC04020-600.jpg') center/cover no-repeat",caption:'A considered welcome'},
+      {bg:"url('assets/images/cape-grace-hotel/DSC04066-600.jpg') center/cover no-repeat",caption:'V&A Waterfront at dawn \u2014 the opening shot'},
+      {bg:"url('assets/images/cape-grace-hotel/DSC04069-600.jpg') center/cover no-repeat",caption:'Library bar \u2014 intimate lighting, warm textures'},
+      {bg:"url('assets/images/cape-grace-hotel/DSC04071-600.jpg') center/cover no-repeat",caption:'Suite detail \u2014 attention to craft'},
+      {bg:"url('assets/images/cape-grace-hotel/DSC04075-600.jpg') center/cover no-repeat",caption:'Quiet rituals of hospitality'},
+      {bg:"url('assets/images/cape-grace-hotel/DSC04076-600.jpg') center/cover no-repeat",caption:'Textures of stay'},
+      {bg:"url('assets/images/cape-grace-hotel/DSC04077-600.jpg') center/cover no-repeat",caption:'The language of place'},
+      {bg:"url('assets/images/cape-grace-hotel/DSC04082-2560.jpg') center/cover no-repeat",caption:'A closing moment \u2014 the view that stays with you'}
     ],
     deliverables_title: 'A complete content <em>library.</em>',
     deliverables: [
@@ -724,6 +742,75 @@ const projects = {
     },
     video_bg: 'linear-gradient(135deg, #1A2A18 0%, #2C3820 40%, #1A2018 100%)',
     video_label: 'Hero Brand Video \u2014 2.5 min'
+  },
+  rovos: {
+    hero_bg: "url('assets/images/rovos-rail/DSC04283-2560.jpg') center/cover no-repeat",
+    eyebrow: 'Brand Content Day &middot; Luxury Travel',
+    title: 'Rovos <em>Rail</em>',
+    subtitle: "The world's most luxurious train \u2014 nine days from Pretoria toward the coast, only twenty-four guests on board. The challenge: communicate the emotional premium of slow travel to an audience that has forgotten why it matters.",
+    meta: [
+      {label:'Client',value:'Rovos Rail'},
+      {label:'Location',value:'Southern Africa'},
+      {label:'Service',value:'Brand Content Day'},
+      {label:'Language',value:'English'},
+      {label:'Timeline',value:'Filmed on-route, 14 days delivery'}
+    ],
+    brief_title: 'A journey in <em>motion</em> \u2014 captured at rest.',
+    brief_text: [
+      "Rovos has a rare product: guests spend nine uninterrupted days on board, trading connectivity for a view that's changing at 60 km/h. The existing content showed the train. What it didn't show was what the train feels like \u2014 the unhurried pace, the rituals of dressing for dinner, the conversation with a stranger who becomes a friend by the third evening.",
+      "The goal was a content library that could sell the emotional premium of slow travel \u2014 to audiences that don't yet know why they should care."
+    ],
+    approach_title: 'Film the <em>feeling,</em> not the facts.',
+    approach_items: [
+      'Rode a full leg of the route \u2014 boarding, first dinner, night on the rails, sunrise through the window, final arrival',
+      'Shot list organised around the guest journey: pre-departure, at-table, in-compartment, passing-landscape, in-service',
+      "Low-light discipline for the dining and observation cars \u2014 no flash, only what the train's own ambience allowed",
+      'Captured the details guests remember most \u2014 polished brass, cream linen, silver service, a window framing a country in motion',
+      'Humanising moments with the crew: the chef, the sommelier, the butler who remembers how you take your coffee'
+    ],
+    gallery: [
+      {bg:"url('assets/images/rovos-rail/DSC04274-2560.jpg') center/cover no-repeat",caption:'Pretoria Station \u2014 the private platform'},
+      {bg:"url('assets/images/rovos-rail/DSC04277-600.jpg') center/cover no-repeat",caption:'The red carpet moment'},
+      {bg:"url('assets/images/rovos-rail/DSC04278-600.jpg') center/cover no-repeat",caption:'Polished brass, warm wood'},
+      {bg:"url('assets/images/rovos-rail/DSC04281-600.jpg') center/cover no-repeat",caption:'Where the hours slow down'},
+      {bg:"url('assets/images/rovos-rail/DSC04283-600.jpg') center/cover no-repeat",caption:'A corridor of quiet doors'},
+      {bg:"url('assets/images/rovos-rail/DSC04286-600.jpg') center/cover no-repeat",caption:'Dressed for dinner'},
+      {bg:"url('assets/images/rovos-rail/DSC04334-600.jpg') center/cover no-repeat",caption:'Through the landscape \u2014 the view framed in teak'},
+      {bg:"url('assets/images/rovos-rail/DSC04349-600.jpg') center/cover no-repeat",caption:'Observation car at golden hour'},
+      {bg:"url('assets/images/rovos-rail/DSC04360-600.jpg') center/cover no-repeat",caption:'The lounge \u2014 slow hours, good company'},
+      {bg:"url('assets/images/rovos-rail/DSC04370-600.jpg') center/cover no-repeat",caption:'Open plains, closing distance'},
+      {bg:"url('assets/images/rovos-rail/DSC04375-600.jpg') center/cover no-repeat",caption:'A pause between miles'},
+      {bg:"url('assets/images/rovos-rail/DSC04380-600.jpg') center/cover no-repeat",caption:'Golden light on the rails'},
+      {bg:"url('assets/images/rovos-rail/DSC04384-600.jpg') center/cover no-repeat",caption:'The dining car \u2014 crystal and cream linen'},
+      {bg:"url('assets/images/rovos-rail/DSC04388-600.jpg') center/cover no-repeat",caption:'Service, unhurried'},
+      {bg:"url('assets/images/rovos-rail/DSC04391-600.jpg') center/cover no-repeat",caption:'Candlelight and good company'},
+      {bg:"url('assets/images/rovos-rail/DSC04400-600.jpg') center/cover no-repeat",caption:'The bar car \u2014 nightfall begins'},
+      {bg:"url('assets/images/rovos-rail/DSC04405-600.jpg') center/cover no-repeat",caption:'Nightfall through glass'},
+      {bg:"url('assets/images/rovos-rail/DSC04407-600.jpg') center/cover no-repeat",caption:'Quiet corners of the train'},
+      {bg:"url('assets/images/rovos-rail/DSC04475-600.jpg') center/cover no-repeat",caption:'Daybreak on the line'},
+      {bg:"url('assets/images/rovos-rail/DSC04515-600.jpg') center/cover no-repeat",caption:'Wide horizons \u2014 southern Africa from the window'},
+      {bg:"url('assets/images/rovos-rail/DSC04643-600.jpg') center/cover no-repeat",caption:'A final arrival'},
+      {bg:"url('assets/images/rovos-rail/DSC04593-2560.jpg') center/cover no-repeat",caption:'The closing chapter'}
+    ],
+    deliverables_title: 'Content that <em>transports.</em>',
+    deliverables: [
+      '1 hero brand film (3.5 min) \u2014 a sensory narrative of the journey from platform to final arrival',
+      '8 short-form clips (15\u201345 sec) \u2014 compartment, dining, observation, bar car, scenery, service, arrival, and crew',
+      'A photo library of 80+ stills, edited and colour-graded in the Rovos house look',
+      'Written captions crafted for an audience that reads slowly, with soft CTAs to the booking page',
+      'Full raw footage archive \u2014 organised by carriage and time-of-day for reuse across future campaigns'
+    ],
+    results: [
+      {num:'9',label:'Days on board, one content day'},
+      {num:'80',label:'Stills ready to post'},
+      {num:'5',label:'Countries, one brand story'}
+    ],
+    testimonial: {
+      text: 'Replace this with a real quote from the Rovos Rail team about how the content landed with their audience.',
+      author: 'Marketing Director \u2014 Rovos Rail, Pretoria'
+    },
+    video_bg: 'linear-gradient(135deg, #2C1A14 0%, #4A2D22 40%, #3D2218 70%, #1A0F0A 100%)',
+    video_label: 'Hero Brand Film \u2014 3.5 min'
   }
 };
 
